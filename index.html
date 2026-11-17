@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Leave Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Leave Management System</h1>
+        <p>Student Leave Application Portal</p>
+    </header>
+
+    <!-- LOGIN PAGE -->
+
+    <section id="loginPage" class="box">
+
+        <h2>Login</h2>
+
+        <div class="buttons">
+            <button onclick="studentLogin()">Student Login</button>
+            <button onclick="teacherLogin()">Teacher Login</button>
+        </div>
+
+        <form id="loginForm">
+
+            <h3 id="loginTitle">Student Login</h3>
+
+            <input type="text" id="loginId"
+                placeholder="Student ID" required>
+
+            <input type="password" id="loginPassword"
+                placeholder="Password" required>
+
+            <button type="submit">Login</button>
+
+        </form>
+
+        <p id="registerLink">
+            New Student?
+            <a href="#" onclick="showRegister()">Register Here</a>
+        </p>
+
+        <form id="registerForm" class="hidden">
+
+            <h3>Student Registration</h3>
+
+            <input type="text" id="name"
+                placeholder="Student Name" required>
+
+            <input type="email" id="email"
+                placeholder="Email" required>
+
+            <input type="password" id="password"
+                placeholder="Password (minimum 6 characters)" required>
+
+            <button type="submit">Register</button>
+
+            <p>
+                Already registered?
+                <a href="#" onclick="showLogin()">Login</a>
+            </p>
+
+        </form>
+
+    </section>
+
+    <!-- STUDENT DASHBOARD -->
+
+    <section id="studentDashboard" class="hidden">
+
+        <div class="top">
+            <h2>Student Dashboard</h2>
+            <button onclick="logout()">Logout</button>
+        </div>
+
+        <div class="box">
+
+            <h3 id="studentName"></h3>
+            <p id="studentId"></p>
+
+            <div class="cards">
+
+                <div class="card">
+                    <h3>Casual Leave</h3>
+                    <h1 id="casual">10</h1>
+                    <p>Available Days</p>
+                </div>
+
+                <div class="card">
+                    <h3>Medical Leave</h3>
+                    <h1 id="medical">10</h1>
+                    <p>Available Days</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- APPLY LEAVE -->
+
+        <div class="box">
+
+            <h2>Apply for Leave</h2>
+
+            <form id="leaveForm">
+
+                <label>Leave Type</label>
+
+                <select id="leaveType" required>
+                    <option value="Casual">Casual Leave</option>
+                    <option value="Medical">Medical Leave</option>
+                </select>
+
+                <label>From Date</label>
+                <input type="date" id="fromDate" required>
+
+                <label>To Date</label>
+                <input type="date" id="toDate" required>
+
+                <label>Reason</label>
+                <textarea id="reason"
+                    placeholder="Enter your reason" required></textarea>
+
+                <button type="submit">Submit Application</button>
+
+            </form>
+
+        </div>
+
+        <!-- STUDENT APPLICATION HISTORY -->
+
+        <div class="box">
+
+            <h2>My Leave Applications</h2>
+
+            <div class="table-container">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Days</th>
+                            <th>Reason</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="myLeaves"></tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- TEACHER DASHBOARD -->
+
+    <section id="teacherDashboard" class="hidden">
+
+        <div class="top">
+            <h2>Teacher Dashboard</h2>
+            <button onclick="logout()">Logout</button>
+        </div>
+
+        <div class="box">
+
+            <h2>Student Leave Applications</h2>
+
+            <button onclick="loadTeacher()">Refresh</button>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Days</th>
+                            <th>Reason</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="allLeaves"></tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
