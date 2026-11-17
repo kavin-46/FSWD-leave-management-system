@@ -1,4 +1,4 @@
-const API = "http://localhost:5000";
+const API ="https://fswd-leave-management-system.onrender.com" ;
 
 let loginType = "student";
 
